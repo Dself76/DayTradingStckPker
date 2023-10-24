@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis for {{ ticker }}</title>
+</head>
+<body>
+<h1>Analysis for {{ ticker }}</h1>
+
+{% for year_data in data %}
+    <h2>Year: {{ year_data.year }}</h2>
+    <ul>
+    {% for month_data in year_data.months %}
+        <li>Month {{ month_data.month }}: {{ month_data.positive_days }} positive days</li>
+    {% endfor %}
+    </ul>
+    <p>Best month for day trading in {{ year_data.year }}: {{ year_data.best_month }}</p>
+    <hr>
+{% endfor %}
+</body>
+</html>

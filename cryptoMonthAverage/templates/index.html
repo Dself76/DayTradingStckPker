@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Stock Data</h1>
+    
+    <h2>Enter Ticker and Date Range</h2>
+    <form action="/" method="post">
+        <label for="ticker">Ticker:</label>
+        <input type="text" id="ticker" name="ticker" placeholder="e.g., AAPL or BTC">
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date">
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date">
+        <button type="submit">Get Data</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Open</th>
+                <th>High</th>
+                <th>Low</th>
+                <th>Close</th>
+                <th>Volume</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in data %}
+            <tr>
+                <td>{{ entry.date }}</td>
+                <td>{{ entry.open }}</td>
+                <td>{{ entry.high }}</td>
+                <td>{{ entry.low }}</td>
+                <td>{{ entry.close }}</td>
+                <td>{{ entry.volume }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="/">Back to home</a>
+</body>
+</html>
